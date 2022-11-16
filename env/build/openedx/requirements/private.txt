@@ -1,0 +1,9 @@
+git+https://github.com/openedx/xblock-lti-consumer.git
+git+https://github.com/edx-solutions/xblock-google-drive.git
+git+https://github.com/edx/DoneXBlock.git
+git+https://github.com/raccoongang/xblock-pdf@harrow-v.1.0.0#egg=xblock-pdf
+git+https://github.com/open-craft/xblock-poll.git
+git+https://github.com/overhangio/openedx-scorm-xblock.git
+git+https://github.com/openedx/staff_graded-xblock.git
+git+https://github.com/openedx/xblock-in-video-quiz.git
+-e ./jupyter-edx-viewer-xblock
