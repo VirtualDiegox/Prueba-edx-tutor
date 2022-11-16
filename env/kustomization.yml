@@ -10,7 +10,7 @@ resources:
 
 
 # namespace to deploy all Resources to
-namespace: openedx
+namespace: open-edx
 
 # annotations added to all Resources
 # https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/commonannotations/
