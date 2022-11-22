@@ -42,7 +42,7 @@ ELASTIC_SEARCH_CONFIG = [{
   "port": 9200,
 }]
 
-CONTACT_MAILING_ADDRESS = "UNEdx - http://local.overhang.io"
+CONTACT_MAILING_ADDRESS = "UNEdx - http://untic-fibog.com"
 
 DEFAULT_FROM_EMAIL = ENV_TOKENS.get("DEFAULT_FROM_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
 DEFAULT_FEEDBACK_EMAIL = ENV_TOKENS.get("DEFAULT_FEEDBACK_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
@@ -124,7 +124,7 @@ LANGUAGE_COOKIE_NAME = "openedx-language-preference"
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
-JWT_AUTH["JWT_ISSUER"] = "http://local.overhang.io/oauth2"
+JWT_AUTH["JWT_ISSUER"] = "http://untic-fibog.com/oauth2"
 JWT_AUTH["JWT_AUDIENCE"] = "openedx"
 JWT_AUTH["JWT_SECRET_KEY"] = "KQWwu7sMbuBsqPNbytm3f59p"
 JWT_AUTH["JWT_PRIVATE_SIGNING_JWK"] = json.dumps(
@@ -152,7 +152,7 @@ JWT_AUTH["JWT_PUBLIC_SIGNING_JWK_SET"] = json.dumps(
 )
 JWT_AUTH["JWT_ISSUERS"] = [
     {
-        "ISSUER": "http://local.overhang.io/oauth2",
+        "ISSUER": "http://untic-fibog.com/oauth2",
         "AUDIENCE": "openedx",
         "SECRET_KEY": "KQWwu7sMbuBsqPNbytm3f59p"
     }
@@ -182,7 +182,7 @@ ORA2_FILEUPLOAD_BACKEND = "s3"
 FILE_UPLOAD_STORAGE_BUCKET_NAME = "openedxuploads"
 
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_S3_ENDPOINT_URL = "http://files.local.overhang.io"
+AWS_S3_ENDPOINT_URL = "http://files.untic-fibog.com"
 AWS_AUTO_CREATE_BUCKET = False # explicit is better than implicit
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_EXPIRE = 7 * 24 * 60 * 60  # 1 week: this is necessary to generate valid download urls
@@ -200,7 +200,7 @@ USER_TASKS_ARTIFACT_STORAGE = f"{__name__}.MinIOStorage"
 ######## End of settings common to LMS and CMS
 
 ######## Common LMS settings
-LOGIN_REDIRECT_WHITELIST = ["studio.local.overhang.io"]
+LOGIN_REDIRECT_WHITELIST = ["studio.untic-fibog.com"]
 
 # Better layout of honor code/tos links during registration
 REGISTRATION_EXTRA_FIELDS["terms_of_service"] = "required"
@@ -258,24 +258,24 @@ SESSION_COOKIE_SAMESITE = "Lax"
 
 
 # CMS authentication
-IDA_LOGOUT_URI_LIST.append("http://studio.local.overhang.io/logout/")
+IDA_LOGOUT_URI_LIST.append("http://studio.untic-fibog.com/logout/")
 
 # Required to display all courses on start page
 SEARCH_SKIP_ENROLLMENT_START_DATE_FILTERING = True
 
 
-ACCOUNT_MICROFRONTEND_URL = "http://apps.local.overhang.io/account"
+ACCOUNT_MICROFRONTEND_URL = "http://apps.untic-fibog.com/account"
 
 
-WRITABLE_GRADEBOOK_URL = "http://apps.local.overhang.io/gradebook"
+WRITABLE_GRADEBOOK_URL = "http://apps.untic-fibog.com/gradebook"
 
 
-LEARNING_MICROFRONTEND_URL = "http://apps.local.overhang.io/learning"
+LEARNING_MICROFRONTEND_URL = "http://apps.untic-fibog.com/learning"
 
 
-PROFILE_MICROFRONTEND_URL = "http://apps.local.overhang.io/profile/u/"
+PROFILE_MICROFRONTEND_URL = "http://apps.untic-fibog.com/profile/u/"
 
 
-LOGIN_REDIRECT_WHITELIST.append("apps.local.overhang.io")
-CORS_ORIGIN_WHITELIST.append("http://apps.local.overhang.io")
-CSRF_TRUSTED_ORIGINS.append("apps.local.overhang.io")
+LOGIN_REDIRECT_WHITELIST.append("apps.untic-fibog.com")
+CORS_ORIGIN_WHITELIST.append("http://apps.untic-fibog.com")
+CSRF_TRUSTED_ORIGINS.append("apps.untic-fibog.com")

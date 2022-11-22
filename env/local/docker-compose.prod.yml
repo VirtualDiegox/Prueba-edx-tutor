@@ -18,8 +18,8 @@ services:
         # These aliases are for internal communication between containers when running locally
         # with *.local.overhang.io hostnames.
         aliases:
-          - "local.overhang.io"
-          - "files.local.overhang.io"
+          - "untic-fibog.com"
+          - "files.untic-fibog.com"
     
 
   # MFE

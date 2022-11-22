@@ -2,14 +2,14 @@
 import os
 from cms.envs.devstack import *
 
-LMS_BASE = "local.overhang.io:8000"
+LMS_BASE = "untic-fibog.com:8000"
 LMS_ROOT_URL = "http://" + LMS_BASE
 
 # Authentication
 SOCIAL_AUTH_EDX_OAUTH2_KEY = "cms-sso-dev"
 SOCIAL_AUTH_EDX_OAUTH2_PUBLIC_URL_ROOT = LMS_ROOT_URL
 
-FEATURES["PREVIEW_LMS_BASE"] = "preview.local.overhang.io:8000"
+FEATURES["PREVIEW_LMS_BASE"] = "preview.untic-fibog.com:8000"
 
 ####### Settings common to LMS and CMS
 import json
@@ -51,7 +51,7 @@ ELASTIC_SEARCH_CONFIG = [{
   "port": 9200,
 }]
 
-CONTACT_MAILING_ADDRESS = "UNEdx - http://local.overhang.io"
+CONTACT_MAILING_ADDRESS = "UNEdx - http://untic-fibog.com"
 
 DEFAULT_FROM_EMAIL = ENV_TOKENS.get("DEFAULT_FROM_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
 DEFAULT_FEEDBACK_EMAIL = ENV_TOKENS.get("DEFAULT_FEEDBACK_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
@@ -133,7 +133,7 @@ LANGUAGE_COOKIE_NAME = "openedx-language-preference"
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
-JWT_AUTH["JWT_ISSUER"] = "http://local.overhang.io/oauth2"
+JWT_AUTH["JWT_ISSUER"] = "http://untic-fibog.com/oauth2"
 JWT_AUTH["JWT_AUDIENCE"] = "openedx"
 JWT_AUTH["JWT_SECRET_KEY"] = "KQWwu7sMbuBsqPNbytm3f59p"
 JWT_AUTH["JWT_PRIVATE_SIGNING_JWK"] = json.dumps(
@@ -161,7 +161,7 @@ JWT_AUTH["JWT_PUBLIC_SIGNING_JWK_SET"] = json.dumps(
 )
 JWT_AUTH["JWT_ISSUERS"] = [
     {
-        "ISSUER": "http://local.overhang.io/oauth2",
+        "ISSUER": "http://untic-fibog.com/oauth2",
         "AUDIENCE": "openedx",
         "SECRET_KEY": "KQWwu7sMbuBsqPNbytm3f59p"
     }
@@ -191,7 +191,7 @@ ORA2_FILEUPLOAD_BACKEND = "s3"
 FILE_UPLOAD_STORAGE_BUCKET_NAME = "openedxuploads"
 
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_S3_ENDPOINT_URL = "http://files.local.overhang.io"
+AWS_S3_ENDPOINT_URL = "http://files.untic-fibog.com"
 AWS_AUTO_CREATE_BUCKET = False # explicit is better than implicit
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_EXPIRE = 7 * 24 * 60 * 60  # 1 week: this is necessary to generate valid download urls
@@ -235,4 +235,4 @@ COURSE_IMPORT_EXPORT_STORAGE = USER_TASKS_ARTIFACT_STORAGE
 # Setup correct webpack configuration file for development
 WEBPACK_CONFIG_PATH = "webpack.dev.config.js"
 
-AWS_S3_ENDPOINT_URL = "http://files.local.overhang.io:9000"
+AWS_S3_ENDPOINT_URL = "http://files.untic-fibog.com:9000"

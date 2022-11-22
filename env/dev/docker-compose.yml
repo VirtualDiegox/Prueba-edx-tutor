@@ -38,7 +38,7 @@ services:
     networks:
       default:
         aliases:
-          - "local.overhang.io"
+          - "untic-fibog.com"
 
   cms:
     <<: *openedx-service
@@ -143,4 +143,4 @@ services:
     networks:
       default:
         aliases:
-          - "files.local.overhang.io"
+          - "files.untic-fibog.com"

@@ -94,7 +94,7 @@ services:
     restart: unless-stopped
     user: "100:101"
     environment:
-      HOSTNAME: "local.overhang.io"
+      HOSTNAME: "untic-fibog.com"
   
 
   ############# LMS and CMS
