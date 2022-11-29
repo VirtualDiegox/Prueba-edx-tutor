@@ -1,25 +1,25 @@
 
 ACCESS_TOKEN_COOKIE_NAME=edx-jwt-cookie-header-payload
-BASE_URL=apps.untic-fibog.com
+BASE_URL=apps.openedx.untic-fibog.com
 CSRF_TOKEN_API_PATH=/csrf/api/v1/token
 CREDENTIALS_BASE_URL=
 DISCOVERY_API_BASE_URL=
 ECOMMERCE_BASE_URL=
 ENABLE_NEW_RELIC=false
-FAVICON_URL=http://untic-fibog.com/favicon.ico
+FAVICON_URL=http://openedx.untic-fibog.com/favicon.ico
 LANGUAGE_PREFERENCE_COOKIE_NAME=openedx-language-preference
-LMS_BASE_URL=http://untic-fibog.com
-LOGIN_URL=http://untic-fibog.com/login
-LOGO_URL=http://untic-fibog.com/theming/asset/images/logo.png
-LOGO_TRADEMARK_URL=http://untic-fibog.com/theming/asset/images/logo.png
+LMS_BASE_URL=http://openedx.untic-fibog.com
+LOGIN_URL=http://openedx.untic-fibog.com/login
+LOGO_URL=http://openedx.untic-fibog.com/theming/asset/images/logo.png
+LOGO_TRADEMARK_URL=http://openedx.untic-fibog.com/theming/asset/images/logo.png
 LOGO_WHITE_URL=
-LOGOUT_URL=http://untic-fibog.com/logout
-MARKETING_SITE_BASE_URL=http://untic-fibog.com
+LOGOUT_URL=http://openedx.untic-fibog.com/logout
+MARKETING_SITE_BASE_URL=http://openedx.untic-fibog.com
 NODE_ENV=production
 PUBLISHER_BASE_URL=
-REFRESH_ACCESS_TOKEN_ENDPOINT=http://untic-fibog.com/login_refresh
+REFRESH_ACCESS_TOKEN_ENDPOINT=http://openedx.untic-fibog.com/login_refresh
 SEGMENT_KEY=
 SITE_NAME=UNEdx
-STUDIO_BASE_URL=http://studio.untic-fibog.com
+STUDIO_BASE_URL=http://studio.openedx.untic-fibog.com
 USER_INFO_COOKIE_NAME=user-info
 

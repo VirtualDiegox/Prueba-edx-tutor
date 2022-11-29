@@ -14,20 +14,6 @@ spec:
       labels:
         app.kubernetes.io/name: caddy
     spec:
-      # This Deployment uses a persistent volume claim. This requires
-      # that in order to enable rolling updates (i.e. use a deployment
-      # strategy other than Replace), we schedule the new Pod to the
-      # same node as the original Pod.
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                - key: app.kubernetes.io/name
-                  operator: In
-                  values:
-                    - caddy
-              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: caddy
           image: docker.io/caddy:2.4.6
@@ -37,18 +23,12 @@ spec:
           volumeMounts:
             - mountPath: /etc/caddy/
               name: config
-            - mountPath: /data/
-              name: data
           ports:
             - containerPort: 80
-            - containerPort: 443
       volumes:
         - name: config
           configMap:
             name: caddy-config
-        - name: data
-          persistentVolumeClaim:
-            claimName: caddy
 
 ---
 apiVersion: apps/v1

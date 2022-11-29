@@ -38,7 +38,7 @@ services:
     networks:
       default:
         aliases:
-          - "untic-fibog.com"
+          - "openedx.untic-fibog.com"
 
   cms:
     <<: *openedx-service
@@ -143,4 +143,4 @@ services:
     networks:
       default:
         aliases:
-          - "files.untic-fibog.com"
+          - "files.openedx.untic-fibog.com"

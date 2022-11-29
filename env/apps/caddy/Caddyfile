@@ -25,7 +25,7 @@
     }
 }
 
-untic-fibog.com{$default_site_port}, preview.untic-fibog.com{$default_site_port} {
+openedx.untic-fibog.com{$default_site_port}, preview.openedx.untic-fibog.com{$default_site_port} {
     @favicon_matcher {
         path_regexp ^/favicon.ico$
     }
@@ -44,7 +44,7 @@ untic-fibog.com{$default_site_port}, preview.untic-fibog.com{$default_site_port}
     
 }
 
-studio.untic-fibog.com{$default_site_port} {
+studio.openedx.untic-fibog.com{$default_site_port} {
     @favicon_matcher {
         path_regexp ^/favicon.ico$
     }
@@ -59,7 +59,7 @@ studio.untic-fibog.com{$default_site_port} {
     
 }
 
-apps.untic-fibog.com{$default_site_port} {
+apps.openedx.untic-fibog.com{$default_site_port} {
     respond / 204
     request_body {
         max_size 2MB
@@ -67,9 +67,9 @@ apps.untic-fibog.com{$default_site_port} {
     import proxy "mfe:8002"
 }
 # MinIO
-files.untic-fibog.com{$default_site_port} {
+files.openedx.untic-fibog.com{$default_site_port} {
     import proxy "minio:9000"
 }
-minio.untic-fibog.com{$default_site_port} {
+minio.openedx.untic-fibog.com{$default_site_port} {
     import proxy "minio:9001"
 }

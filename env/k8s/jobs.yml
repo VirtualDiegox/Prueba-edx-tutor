@@ -3,8 +3,8 @@ kind: Job
 metadata:
   labels:
     app.kubernetes.io/component: job
-    app.kubernetes.io/name: lms-job-20221122171800
-  name: lms-job-20221122171800
+    app.kubernetes.io/name: lms-job-20221129184220
+  name: lms-job-20221129184220
 spec:
   backoffLimit: 1
   template:
@@ -14,23 +14,26 @@ spec:
         - sh
         - -e
         - -c
-        - '
-
-          echo "Loading settings $DJANGO_SETTINGS_MODULE"
-
-
-          ./manage.py lms manage_user  --superuser --staff vdiegox dbayonac@unal.edu.co
+        - '(./manage.py lms waffle_flag --list | grep account.redirect_to_microfrontend)
+          || ./manage.py lms waffle_flag --create --everyone account.redirect_to_microfrontend
 
 
-          ./manage.py lms shell -c "from django.contrib.auth import get_user_model
 
-          u = get_user_model().objects.get(username=''vdiegox'')
 
-          u.set_password(''superadmin'')
+          (./manage.py lms waffle_flag --list | grep learner_profile.redirect_to_microfrontend)
+          || ./manage.py lms waffle_flag --create --everyone learner_profile.redirect_to_microfrontend
 
-          u.save()"
+          site-configuration set --domain=openedx.untic-fibog.com ENABLE_PROFILE_MICROFRONTEND
+          true
 
-          '
+          site-configuration set --domain=openedx.untic-fibog.com:8000 ENABLE_PROFILE_MICROFRONTEND
+          true
+
+
+
+
+          (./manage.py lms waffle_flag --list | grep course_home.course_home_mfe_progress_tab)
+          || ./manage.py lms waffle_flag --create --everyone course_home.course_home_mfe_progress_tab'
         env:
         - name: SERVICE_VARIANT
           value: lms

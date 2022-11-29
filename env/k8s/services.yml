@@ -6,9 +6,8 @@ metadata:
   name: caddy
   labels:
     app.kubernetes.io/name: caddy
-    app.kubernetes.io/component: loadbalancer
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 80
       name: http

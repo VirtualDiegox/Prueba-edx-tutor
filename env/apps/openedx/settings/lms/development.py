@@ -42,7 +42,7 @@ ELASTIC_SEARCH_CONFIG = [{
   "port": 9200,
 }]
 
-CONTACT_MAILING_ADDRESS = "UNEdx - http://untic-fibog.com"
+CONTACT_MAILING_ADDRESS = "UNEdx - http://openedx.untic-fibog.com"
 
 DEFAULT_FROM_EMAIL = ENV_TOKENS.get("DEFAULT_FROM_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
 DEFAULT_FEEDBACK_EMAIL = ENV_TOKENS.get("DEFAULT_FEEDBACK_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
@@ -124,7 +124,7 @@ LANGUAGE_COOKIE_NAME = "openedx-language-preference"
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
-JWT_AUTH["JWT_ISSUER"] = "http://untic-fibog.com/oauth2"
+JWT_AUTH["JWT_ISSUER"] = "http://openedx.untic-fibog.com/oauth2"
 JWT_AUTH["JWT_AUDIENCE"] = "openedx"
 JWT_AUTH["JWT_SECRET_KEY"] = "KQWwu7sMbuBsqPNbytm3f59p"
 JWT_AUTH["JWT_PRIVATE_SIGNING_JWK"] = json.dumps(
@@ -152,7 +152,7 @@ JWT_AUTH["JWT_PUBLIC_SIGNING_JWK_SET"] = json.dumps(
 )
 JWT_AUTH["JWT_ISSUERS"] = [
     {
-        "ISSUER": "http://untic-fibog.com/oauth2",
+        "ISSUER": "http://openedx.untic-fibog.com/oauth2",
         "AUDIENCE": "openedx",
         "SECRET_KEY": "KQWwu7sMbuBsqPNbytm3f59p"
     }
@@ -182,7 +182,7 @@ ORA2_FILEUPLOAD_BACKEND = "s3"
 FILE_UPLOAD_STORAGE_BUCKET_NAME = "openedxuploads"
 
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_S3_ENDPOINT_URL = "http://files.untic-fibog.com"
+AWS_S3_ENDPOINT_URL = "http://files.openedx.untic-fibog.com"
 AWS_AUTO_CREATE_BUCKET = False # explicit is better than implicit
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_EXPIRE = 7 * 24 * 60 * 60  # 1 week: this is necessary to generate valid download urls
@@ -200,7 +200,7 @@ USER_TASKS_ARTIFACT_STORAGE = f"{__name__}.MinIOStorage"
 ######## End of settings common to LMS and CMS
 
 ######## Common LMS settings
-LOGIN_REDIRECT_WHITELIST = ["studio.untic-fibog.com"]
+LOGIN_REDIRECT_WHITELIST = ["studio.openedx.untic-fibog.com"]
 
 # Better layout of honor code/tos links during registration
 REGISTRATION_EXTRA_FIELDS["terms_of_service"] = "required"
@@ -247,22 +247,22 @@ PROFILE_IMAGE_BACKEND = {
 # Setup correct webpack configuration file for development
 WEBPACK_CONFIG_PATH = "webpack.dev.config.js"
 
-LMS_BASE = "untic-fibog.com:8000"
+LMS_BASE = "openedx.untic-fibog.com:8000"
 LMS_ROOT_URL = "http://{}".format(LMS_BASE)
 LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 SITE_NAME = LMS_BASE
-CMS_BASE = "studio.untic-fibog.com:8001"
+CMS_BASE = "studio.openedx.untic-fibog.com:8001"
 CMS_ROOT_URL = "http://{}".format(CMS_BASE)
 LOGIN_REDIRECT_WHITELIST.append(CMS_BASE)
 
 # Session cookie
-SESSION_COOKIE_DOMAIN = "untic-fibog.com"
+SESSION_COOKIE_DOMAIN = "openedx.untic-fibog.com"
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SAMESITE = "Lax"
 
 # CMS authentication
-IDA_LOGOUT_URI_LIST.append("http://studio.untic-fibog.com:8001/logout/")
+IDA_LOGOUT_URI_LIST.append("http://studio.openedx.untic-fibog.com:8001/logout/")
 
 FEATURES['ENABLE_COURSEWARE_MICROFRONTEND'] = False
 
@@ -271,37 +271,37 @@ LOGGING["loggers"]["oauth2_provider"] = {
     "level": "DEBUG"
 }
 
-AWS_S3_ENDPOINT_URL = "http://files.untic-fibog.com:9000"
+AWS_S3_ENDPOINT_URL = "http://files.openedx.untic-fibog.com:9000"
 
-ACCOUNT_MICROFRONTEND_URL = "http://apps.untic-fibog.com:1997/account"
-
-
-WRITABLE_GRADEBOOK_URL = "http://apps.untic-fibog.com:1994/gradebook"
+ACCOUNT_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com:1997/account"
 
 
-LEARNING_MICROFRONTEND_URL = "http://apps.untic-fibog.com:2000/learning"
+WRITABLE_GRADEBOOK_URL = "http://apps.openedx.untic-fibog.com:1994/gradebook"
 
 
-PROFILE_MICROFRONTEND_URL = "http://apps.untic-fibog.com:1995/profile/u/"
+LEARNING_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com:2000/learning"
+
+
+PROFILE_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com:1995/profile/u/"
 
 
 
 # account MFE
-CORS_ORIGIN_WHITELIST.append("http://apps.untic-fibog.com:1997")
-LOGIN_REDIRECT_WHITELIST.append("apps.untic-fibog.com:1997")
-CSRF_TRUSTED_ORIGINS.append("apps.untic-fibog.com:1997")
+CORS_ORIGIN_WHITELIST.append("http://apps.openedx.untic-fibog.com:1997")
+LOGIN_REDIRECT_WHITELIST.append("apps.openedx.untic-fibog.com:1997")
+CSRF_TRUSTED_ORIGINS.append("apps.openedx.untic-fibog.com:1997")
 
 # gradebook MFE
-CORS_ORIGIN_WHITELIST.append("http://apps.untic-fibog.com:1994")
-LOGIN_REDIRECT_WHITELIST.append("apps.untic-fibog.com:1994")
-CSRF_TRUSTED_ORIGINS.append("apps.untic-fibog.com:1994")
+CORS_ORIGIN_WHITELIST.append("http://apps.openedx.untic-fibog.com:1994")
+LOGIN_REDIRECT_WHITELIST.append("apps.openedx.untic-fibog.com:1994")
+CSRF_TRUSTED_ORIGINS.append("apps.openedx.untic-fibog.com:1994")
 
 # learning MFE
-CORS_ORIGIN_WHITELIST.append("http://apps.untic-fibog.com:2000")
-LOGIN_REDIRECT_WHITELIST.append("apps.untic-fibog.com:2000")
-CSRF_TRUSTED_ORIGINS.append("apps.untic-fibog.com:2000")
+CORS_ORIGIN_WHITELIST.append("http://apps.openedx.untic-fibog.com:2000")
+LOGIN_REDIRECT_WHITELIST.append("apps.openedx.untic-fibog.com:2000")
+CSRF_TRUSTED_ORIGINS.append("apps.openedx.untic-fibog.com:2000")
 
 # profile MFE
-CORS_ORIGIN_WHITELIST.append("http://apps.untic-fibog.com:1995")
-LOGIN_REDIRECT_WHITELIST.append("apps.untic-fibog.com:1995")
-CSRF_TRUSTED_ORIGINS.append("apps.untic-fibog.com:1995")
+CORS_ORIGIN_WHITELIST.append("http://apps.openedx.untic-fibog.com:1995")
+LOGIN_REDIRECT_WHITELIST.append("apps.openedx.untic-fibog.com:1995")
+CSRF_TRUSTED_ORIGINS.append("apps.openedx.untic-fibog.com:1995")

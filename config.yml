@@ -1,8 +1,9 @@
-CMS_HOST: studio.untic-fibog.com
+CMS_HOST: studio.openedx.untic-fibog.com
 CMS_OAUTH2_SECRET: o1jbau4lLSbpaxva6ud84ujV
 CONTACT_EMAIL: dbayonac@unal.edu.co
 DOCKER_IMAGE_OPENEDX: docker.io/dbayonac/openedx:latest
 ENABLE_HTTPS: false
+ENABLE_WEB_PROXY: false
 ID: LVj27qM9Je4MNFJiKBzdxlP8
 JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
 
@@ -59,7 +60,7 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 K8S_NAMESPACE: open-edx
 LANGUAGE_CODE: en
-LMS_HOST: untic-fibog.com
+LMS_HOST: openedx.untic-fibog.com
 MFE_DOCKER_IMAGE: docker.io/dbayonac/openedx-mfe:latest
 MINIO_AWS_SECRET_ACCESS_KEY: 3A1IjjZamwI7sHQ3SxZ1qkrZ
 MYSQL_ROOT_PASSWORD: MPaPSS0u
