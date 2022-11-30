@@ -42,7 +42,7 @@ ELASTIC_SEARCH_CONFIG = [{
   "port": 9200,
 }]
 
-CONTACT_MAILING_ADDRESS = "UNEdx - http://openedx.untic-fibog.com"
+CONTACT_MAILING_ADDRESS = "UNEdx - https://openedx.untic-fibog.com"
 
 DEFAULT_FROM_EMAIL = ENV_TOKENS.get("DEFAULT_FROM_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
 DEFAULT_FEEDBACK_EMAIL = ENV_TOKENS.get("DEFAULT_FEEDBACK_EMAIL", ENV_TOKENS["CONTACT_EMAIL"])
@@ -124,7 +124,7 @@ LANGUAGE_COOKIE_NAME = "openedx-language-preference"
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
-JWT_AUTH["JWT_ISSUER"] = "http://openedx.untic-fibog.com/oauth2"
+JWT_AUTH["JWT_ISSUER"] = "https://openedx.untic-fibog.com/oauth2"
 JWT_AUTH["JWT_AUDIENCE"] = "openedx"
 JWT_AUTH["JWT_SECRET_KEY"] = "KQWwu7sMbuBsqPNbytm3f59p"
 JWT_AUTH["JWT_PRIVATE_SIGNING_JWK"] = json.dumps(
@@ -152,7 +152,7 @@ JWT_AUTH["JWT_PUBLIC_SIGNING_JWK_SET"] = json.dumps(
 )
 JWT_AUTH["JWT_ISSUERS"] = [
     {
-        "ISSUER": "http://openedx.untic-fibog.com/oauth2",
+        "ISSUER": "https://openedx.untic-fibog.com/oauth2",
         "AUDIENCE": "openedx",
         "SECRET_KEY": "KQWwu7sMbuBsqPNbytm3f59p"
     }
@@ -182,7 +182,7 @@ ORA2_FILEUPLOAD_BACKEND = "s3"
 FILE_UPLOAD_STORAGE_BUCKET_NAME = "openedxuploads"
 
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_S3_ENDPOINT_URL = "http://files.openedx.untic-fibog.com"
+AWS_S3_ENDPOINT_URL = "https://files.openedx.untic-fibog.com"
 AWS_AUTO_CREATE_BUCKET = False # explicit is better than implicit
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_EXPIRE = 7 * 24 * 60 * 60  # 1 week: this is necessary to generate valid download urls
@@ -251,31 +251,32 @@ ALLOWED_HOSTS = [
 ]
 
 
-# When we cannot provide secure session/csrf cookies, we must disable samesite=none
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SAMESITE = "Lax"
+# Properly set the "secure" attribute on session/csrf cookies. This is required in
+# Chrome to support samesite=none cookies.
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "None"
 
 
 # CMS authentication
-IDA_LOGOUT_URI_LIST.append("http://studio.openedx.untic-fibog.com/logout/")
+IDA_LOGOUT_URI_LIST.append("https://studio.openedx.untic-fibog.com/logout/")
 
 # Required to display all courses on start page
 SEARCH_SKIP_ENROLLMENT_START_DATE_FILTERING = True
 
 
-ACCOUNT_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com/account"
+ACCOUNT_MICROFRONTEND_URL = "https://apps.openedx.untic-fibog.com/account"
 
 
-WRITABLE_GRADEBOOK_URL = "http://apps.openedx.untic-fibog.com/gradebook"
+WRITABLE_GRADEBOOK_URL = "https://apps.openedx.untic-fibog.com/gradebook"
 
 
-LEARNING_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com/learning"
+LEARNING_MICROFRONTEND_URL = "https://apps.openedx.untic-fibog.com/learning"
 
 
-PROFILE_MICROFRONTEND_URL = "http://apps.openedx.untic-fibog.com/profile/u/"
+PROFILE_MICROFRONTEND_URL = "https://apps.openedx.untic-fibog.com/profile/u/"
 
 
 LOGIN_REDIRECT_WHITELIST.append("apps.openedx.untic-fibog.com")
-CORS_ORIGIN_WHITELIST.append("http://apps.openedx.untic-fibog.com")
+CORS_ORIGIN_WHITELIST.append("https://apps.openedx.untic-fibog.com")
 CSRF_TRUSTED_ORIGINS.append("apps.openedx.untic-fibog.com")

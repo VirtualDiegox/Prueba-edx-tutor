@@ -13,14 +13,6 @@ services:
       - ../apps/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       
     
-    networks:
-      default:
-        # These aliases are for internal communication between containers when running locally
-        # with *.local.overhang.io hostnames.
-        aliases:
-          - "openedx.untic-fibog.com"
-          - "files.openedx.untic-fibog.com"
-    
 
   # MFE
   mfe:
