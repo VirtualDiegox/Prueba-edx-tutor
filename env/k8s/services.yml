@@ -14,7 +14,7 @@ spec:
       targetPort: 31510
     - port: 443
       name: https
-      targetPort: 31511
+      targetPort: 32510
   selector:
     app.kubernetes.io/name: caddy
 
