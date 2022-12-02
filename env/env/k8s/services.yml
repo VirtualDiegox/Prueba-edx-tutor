@@ -8,10 +8,11 @@ metadata:
     app.kubernetes.io/name: caddy
     app.kubernetes.io/component: loadbalancer
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
       name: http
+      targetPort: 31510
   selector:
     app.kubernetes.io/name: caddy
 

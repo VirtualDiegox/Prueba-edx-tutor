@@ -11,6 +11,7 @@ spec:
   ports:
     - port: 80
       name: http
+      targetPort: 31510
   selector:
     app.kubernetes.io/name: caddy
 

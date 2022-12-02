@@ -1,62 +1,107 @@
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
+  name: lms-job
   labels:
     app.kubernetes.io/component: job
-    app.kubernetes.io/name: lms-job-20221129193616
-  name: lms-job-20221129193616
 spec:
-  backoffLimit: 1
   template:
     spec:
+      restartPolicy: Never
       containers:
-      - args:
-        - sh
-        - -e
-        - -c
-        - '(./manage.py lms waffle_flag --list | grep account.redirect_to_microfrontend)
-          || ./manage.py lms waffle_flag --create --everyone account.redirect_to_microfrontend
-
-
-
-
-          (./manage.py lms waffle_flag --list | grep learner_profile.redirect_to_microfrontend)
-          || ./manage.py lms waffle_flag --create --everyone learner_profile.redirect_to_microfrontend
-
-          site-configuration set --domain=openedx.untic-fibog.com ENABLE_PROFILE_MICROFRONTEND
-          true
-
-          site-configuration set --domain=openedx.untic-fibog.com:8000 ENABLE_PROFILE_MICROFRONTEND
-          true
-
-
-
-
-          (./manage.py lms waffle_flag --list | grep course_home.course_home_mfe_progress_tab)
-          || ./manage.py lms waffle_flag --create --everyone course_home.course_home_mfe_progress_tab'
+      - name: lms
+        image: docker.io/dbayonac/openedx:latest
         env:
         - name: SERVICE_VARIANT
           value: lms
         - name: DJANGO_SETTINGS_MODULE
           value: lms.envs.tutor.production
-        image: docker.io/dbayonac/openedx:latest
-        name: lms
         volumeMounts:
-        - mountPath: /openedx/edx-platform/lms/envs/tutor/
-          name: settings-lms
-        - mountPath: /openedx/edx-platform/cms/envs/tutor/
-          name: settings-cms
-        - mountPath: /openedx/config
-          name: config
-      restartPolicy: Never
+          - mountPath: /openedx/edx-platform/lms/envs/tutor/
+            name: settings-lms
+          - mountPath: /openedx/edx-platform/cms/envs/tutor/
+            name: settings-cms
+          - mountPath: /openedx/config
+            name: config
       volumes:
-      - configMap:
+      - name: settings-lms
+        configMap:
           name: openedx-settings-lms
-        name: settings-lms
-      - configMap:
+      - name: settings-cms
+        configMap:
           name: openedx-settings-cms
-        name: settings-cms
-      - configMap:
+      - name: config
+        configMap:
           name: openedx-config
-        name: config
-  ttlSecondsAfterFinished: 3600
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cms-job
+  labels:
+    app.kubernetes.io/component: job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: cms
+        image: docker.io/dbayonac/openedx:latest
+        env:
+        - name: SERVICE_VARIANT
+          value: cms
+        - name: DJANGO_SETTINGS_MODULE
+          value: cms.envs.tutor.production
+        volumeMounts:
+          - mountPath: /openedx/edx-platform/lms/envs/tutor/
+            name: settings-lms
+          - mountPath: /openedx/edx-platform/cms/envs/tutor/
+            name: settings-cms
+          - mountPath: /openedx/config
+            name: config
+      volumes:
+      - name: settings-lms
+        configMap:
+          name: openedx-settings-lms
+      - name: settings-cms
+        configMap:
+          name: openedx-settings-cms
+      - name: config
+        configMap:
+          name: openedx-config
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-job
+  labels:
+    app.kubernetes.io/component: job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: mysql
+        image: docker.io/mysql:5.7.35
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: minio-job
+  labels:
+    app.kubernetes.io/component: job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: minio
+          image: docker.io/minio/mc:RELEASE.2022-05-09T04-08-26Z
+          command: []
+          env:
+            - name: MINIO_ROOT_USER
+              value: "openedx"
+            - name: MINIO_ROOT_PASSWORD
+              value: "3A1IjjZamwI7sHQ3SxZ1qkrZ"

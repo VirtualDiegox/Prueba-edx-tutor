@@ -2,7 +2,7 @@ CMS_HOST: studio.openedx.untic-fibog.com
 CMS_OAUTH2_SECRET: o1jbau4lLSbpaxva6ud84ujV
 CONTACT_EMAIL: dbayonac@unal.edu.co
 DOCKER_IMAGE_OPENEDX: docker.io/dbayonac/openedx:latest
-ENABLE_HTTPS: false
+ENABLE_HTTPS: true
 ENABLE_WEB_PROXY: false
 ID: LVj27qM9Je4MNFJiKBzdxlP8
 JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
