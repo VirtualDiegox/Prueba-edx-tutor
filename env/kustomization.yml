@@ -64,5 +64,3 @@ configMapGenerator:
   options:
     labels:
         app.kubernetes.io/name: redis
-
-
