@@ -7,14 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/name: caddy
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 80
       name: http
-      targetPort: 31510
-    - port: 443
-      name: https
-      targetPort: 32510
   selector:
     app.kubernetes.io/name: caddy
 
